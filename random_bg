@@ -1,4 +1,14 @@
 #!/bin/bash
-_CUR_BACKGROUND=$(fd . '/home/gurjal/Pictures/wallpapers/' -tf | shuf -n 1)
-nitrogen --set-zoom-fill --head=1 $_CUR_BACKGROUND
-nitrogen --set-zoom-fill --head=0 $_CUR_BACKGROUND
+
+# selecting random background
+##
+_CUR_BACKGROUND=$(fd . '/home/'$USER'/Pictures/wallpapers/' -tf | shuf -n 1)
+
+# multihead setup
+#   each monitor set to zoomed fill with selected background
+##
+_MONITORS=$(xrandr --listmonitors | sed 1d | awk -F: '{print $1}')
+for _CUR_MONITOR in $_MONITORS
+do
+  nitrogen --set-zoom-fill --head=$_CUR_MONITOR $_CUR_BACKGROUND >& /dev/null
+done
