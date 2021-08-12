@@ -1,0 +1,4 @@
+#!/bin/bash
+_CUR_BACKGROUND=$(fd . '/home/gurjal/Pictures/wallpapers/' -tf | shuf -n 1)
+nitrogen --set-zoom-fill --head=1 $_CUR_BACKGROUND
+nitrogen --set-zoom-fill --head=0 $_CUR_BACKGROUND
